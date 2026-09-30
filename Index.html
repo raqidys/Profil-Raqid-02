@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Raqid Yaqdhan Saqti</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --border-color: rgba(226, 232, 240, 0.8);
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0b0f19;
+            --bg-card: rgba(18, 24, 38, 0.85);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --border-color: rgba(30, 41, 59, 0.8);
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: var(--glass-border);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+        }
+
+        /* Container & Bento Layout */
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 2rem;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2rem;
+            border: var(--glass-border);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hero Card dengan Foto */
+        .card-profile {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--accent);
+            flex-shrink: 0;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .profile-info h1 {
+            font-size: 2.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p.subtitle {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .profile-info p.desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Quick Stats Card */
+        .card-stats {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-item {
+            margin-bottom: 1rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Timeline Section */
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.45rem;
+            top: 0.3rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg-primary);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: var(--glass-border);
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-profile {
+                grid-column: span 1;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">RAQID.SAQTI</a>
+        <ul class="nav-links">
+            <li><a href="#about">Profile</a></li>
+            <li><a href="#timeline">Perjalanan</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" title="Ubah Tema">
+            <i class="fa-solid me-moon" id="themeIcon"></i>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Bento Hero Section -->
+        <div class="bento-grid" id="about">
+            
+            <!-- Main Profile Card -->
+            <div class="bento-card card-profile">
+                <div class="profile-img-container">
+                    <!-- Foto Anda dimasukkan langsung di sini -->
+                    <img src="1000205326.jpg" alt="Foto Raqid Yaqdhan Saqti">
+                </div>
+                <div class="profile-info">
+                    <p class="subtitle">Inspirasi & Pemimpin Muda</p>
+                    <h1>Raqid Yaqdhan Saqti</h1>
+                    <p class="desc">
+                        Halo! Saya adalah seorang pelajar dan aktivis organisasi yang berdedikasi tinggi. Berfokus pada pengembangan kepemimpinan, pencapaian prestasi, serta eksplorasi teknologi dan pengembangan diri.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Stats / Highlights -->
+            <div class="bento-card card-stats">
+                <div class="stat-item">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Sertifikat & Penghargaan</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Organisasi</div>
+                    <div class="stat-label">Aktif Kepengurusan & Kepemimpinan</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Interactive Timeline -->
+        <h2 class="section-title" id="timeline">
+            <i class="fa-solid fa-compass" style="color: var(--accent);"></i> Jurnal Perjalanan
+        </h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2024 - Sekarang</div>
+                <h3 class="timeline-title">Pencapaian Sertifikasi & Aktivitas Kepemimpinan</h3>
+                <p class="timeline-desc">
+                    Aktif meraih berbagai penghargaan dan sertifikat di bidang akademis maupun organisasi, serta memimpin berbagai inisiatif kegiatan pemuda.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2023</div>
+                <h3 class="timeline-title">Eksplorasi Teknologi & Web Development</h3>
+                <p class="timeline-desc">
+                    Mulai mempelajari dasar-dasar pemrograman web, desain antarmuka, dan pengelolaan proyek berbasis teknologi.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Raqid Yaqdhan Saqti. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Dark / Light Mode Switcher
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeIcon.className = 'fa-solid fa-moon';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fa-solid fa-sun';
+            }
+        });
+    </script>
+</body>
+</html>
